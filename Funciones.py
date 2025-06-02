@@ -1,0 +1,111 @@
+import os
+
+def init_matriz(cantidad_filas:int = 2, cantidad_columnas:int = 3,valor_inicial:any = 0) -> list:
+    matriz = []
+    for _ in range(cantidad_filas):
+        fila = [valor_inicial] * cantidad_columnas
+
+        matriz += [fila]
+        
+    return matriz
+
+def registrar_participantes(participantes:list) -> list:
+    """Registración de los Participantes del certamen
+
+    Args:
+        participantes (list): lista de participantes inicial
+
+    Returns:
+        list: lista con los registros agregados.
+    """
+        
+    while True: 
+        os.system("clear")
+        print("     -> (1) Ingrese un nuevo participante\n     -> (0) Volver al menú anterior. ")
+        user_input = pedir_dato("\nElegí una opción para proceder: ", int, 0, 1)
+      
+        match user_input:
+            case 1: 
+                os.system("clear")
+                nombre_participante = pedir_dato("-> Ingrese el nombre del participante: ", str, 0, 3)
+                participantes = participantes + [nombre_participante]
+            case 0:
+                break
+        
+    return participantes
+
+def definir_matriz(matriz, participantes:list, jurados:int = 3) -> list:
+    """Define las filas y columnas necesarias de nuestra matriz para almacenar los datos necesarios. 
+       Los participantes seran referidos en la lista participantes = [].
+       Cada indice de esta fila coincidirá con los indices de las filas de la Matriz. 
+       Cada columna representará a los jurados.
+       Los valores almacenados serán el valor de los votos.  
+
+    Args:
+        matriz (list): Matriz de referencia
+        participantes (list): _description_
+        jurados (int, optional): _description_. Defaults to 3.
+        
+    Returns: 
+        matriz (list): Matriz con filas y columnas adecuadas.
+    """
+    if len(matriz) == 0:
+        return init_matriz(len(participantes), jurados)
+    
+    if len(matriz[0]) < jurados:
+        diferencia = jurados - len(matriz[0])
+        for i in range(len(matriz)):
+            matriz[i] = matriz[i] + [0] * diferencia
+    
+    if len(matriz) < len(participantes):
+        fila = [0] * len(matriz[0])
+        for _ in range(len(participantes) - len(matriz)):
+            matriz += [fila]
+    
+    return matriz
+
+def carga_puntuacion(matriz:list, participantes:list, i:int, jurados:int):
+    j = 1
+    while j <= jurados: 
+        nota = pedir_dato(f"JURADO {j}: Ingrese la nota del participante {participantes[i]}: ", int, 0, 10)
+        matriz[i][j-1] = nota
+        j += 1
+        
+    print("Notas: ", matriz[i])
+    
+def pedir_dato(mensaje: str, tipo: type = int, minimo: int = None, maximo: int = None, longitud_minima: int = None) -> int | str:
+    """
+    Lee un valor de la consola y lo valida según los parámetros recibidos.
+    - tipo: int  → intenta castear a entero
+            str  → deja como string
+    - minimo / maximo: límites para enteros
+    - longitud_minima: para strings
+    - solo_letras: obliga a que el texto contenga solo letras y espacios
+    Devuelve el valor ya validado.
+    """
+    while True:
+        dato_ingresado = input(mensaje)
+
+        if tipo is int:
+            try:
+                valor_int = int(dato_ingresado)
+                if minimo is not None and valor_int < minimo:
+                    print(f"Debe ser >= {minimo}")
+                    continue
+                if maximo is not None and valor_int > maximo:
+                    print(f"Debe ser <= {maximo}")
+                    continue
+                return valor_int
+            except ValueError:
+                print("Ups! Debes ingresar un número entero. Volvé a intentarlo.")
+                continue
+
+        elif tipo is str:
+            try: 
+                valor_str = str(dato_ingresado)    
+                if longitud_minima and len(mensaje) < longitud_minima:
+                    print(f"Debe tener al menos {longitud_minima} caracteres.")
+                    continue
+                return valor_str
+            except ValueError: 
+                print("Ups! El nombre debe contener al menos 3 letras. Volvé a intentarlo.")
