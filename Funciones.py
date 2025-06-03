@@ -226,7 +226,7 @@ def cargar_datos_ejemplo(matriz: list, participantes: list, cant_jurados: int) -
         tuple: participantes y matriz actualizada
     """
     nombres_demo = [
-        "Juan Pérez", 
+        "Mateo Di Loreto", 
         "María González", 
         "Pedro Ramírez", 
         "Ana Torres", 
