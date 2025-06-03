@@ -121,17 +121,19 @@ while True:
                             print("No hay puntuaciones cargadas.")
                             input("\nENTER para volver...")
                             break
-
+                        # 1) saco el promedio mínimo
                         prom_min = proms[0]
                         for p in proms:          
                             if p < prom_min:
                                 prom_min = p
-
+                                
+                        # 2) recorro los promedios y agrego al jurado a la lista de jurado mas estricto
                         jurados_min = []
                         for j in range(len(proms)):
                             if proms[j] == prom_min:
                                 jurados_min = jurados_min + [j]  
-
+                                
+                        # 3) muestro 1 o varios jurados mas estrictos 
                         for j in jurados_min:
                             print(f" -> Jurado {j+1} con promedio {prom_min}")
 
