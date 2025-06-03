@@ -11,11 +11,11 @@ matriz_puntuacion, participantes = cargar_datos_ejemplo(matriz_puntuacion, parti
 while True: 
     os.system("clear")
     print("¡COMPETENCIA ABIERTA DE ACADEMIA DE BAILE! ")
-    print(" --- MENU DE OPCIONES: ---\n\n -> (1) Registrar participantes \n -> (2) Registrar puntuaciones del Jurado\n -> (3) Ver información de los Datos cargados\n -> (4) Definir la cantidad de jurados \n -> (0) Salir del programa. \n\n")
+    print(" --- MENU DE OPCIONES: ---\n\n -> (1) Registrar participantes \n -> (2) Registrar puntuaciones del Jurado\n -> (3) Ver información de los Datos cargados\n -> (4) Definir la cantidad de jurados \n -> (0) Salir del programa. \n")
     
     # Opcional para PRUEBAS
     print("Lista de Participantes", participantes)
-    print("Matriz de puntuaciones", matriz_puntuacion)
+    print("Matriz de puntuaciones", matriz_puntuacion, "\n")
 
     user_input = pedir_dato("   -> Elegí una opción para proceder: ", int, 0, 4)
     
