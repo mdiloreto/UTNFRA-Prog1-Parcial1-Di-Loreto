@@ -193,8 +193,8 @@ def pedir_dato(mensaje: str, tipo: str, minimo: int = None, maximo: int = None, 
     Args:
         mensaje (str): mensaje a mostrar para el ingresop de dato.
         tipo (type, optional): tipo del dato si es int o str. Defaults to int.
-        minimo (int, optional): _description_. Defaults to None.
-        maximo (int, optional): _description_. Defaults to None.
+        minimo (int, optional): Solo para int. Valor minimo. Defaults to None.
+        maximo (int, optional): Solo para int. Valor maximo. Defaults to None.
         longitud_minima (int, optional): _description_. Defaults to None.
 
     Returns:
