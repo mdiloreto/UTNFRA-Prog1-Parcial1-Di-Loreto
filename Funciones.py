@@ -157,6 +157,14 @@ def promedios_por_jurado(matriz: list) -> list:
     return promedios
 
 def promedios_por_alumno(matriz:list) -> list:
+    """Promedio de alumnos 
+
+    Args:
+        matriz (list): Matriz originaria con la que trabajamos todo el codigo.
+
+    Returns:
+        list: retorna una lista con los promedios de cada jurado
+    """
     if len(matriz) == 0:
         return []     
                      
