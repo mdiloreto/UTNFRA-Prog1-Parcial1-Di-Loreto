@@ -33,26 +33,21 @@ while True:
             match user_input:
                 case 1: 
                     os.system("clear")
-                    print("-> Lista de Participantes: \n")
-                    for i in range(len(participantes)):
-                        print(i+1, participantes[i])
-                    participante_input = pedir_dato("\nIngrese el número de participante a cargar la puntuación: ", int, 1, len(participantes)                        )
+                    get_all_participantes(participantes)
+                    participante_input = pedir_dato("\nIngrese el número de participante a cargar la puntuación: ", int, 1, len(participantes))
                     os.system("clear")
                     carga_puntuacion(matriz_puntuacion, participantes, participante_input-1, cant_jurados)
                 
                 case 2: 
                     os.system("clear")
                     user_input = pedir_dato(" Ingrese el nombre del participante a buscar: ", str, 3) 
-                    encontrado = False
-                    for i in range(len(participantes)):
-                        if participantes[i].lower() == user_input.lower():
-                            print(f"Participante {participantes[i]} encontrado! Procediendo a la carga de puntuación: ")
-                            carga_puntuacion(matriz_puntuacion, participantes, i, cant_jurados)
-                            encontrado = True
-                            break
-                    if not encontrado:
-                        print("Participante no encontrado. Intentalo de nuevo.")
-                    
+                    encontrado = buscar_participante(participantes, user_input)
+                    if encontrado:
+                        carga_puntuacion(matriz_puntuacion, participantes, user_input, cant_jurados)
+                    else: 
+                        print("Usuario no encontrado!")
+
+                        
         case 3: 
             os.system("clear")
             print("-> (0) Buscar participante por nombre\n -> (1) Mostrar puntuaciones por participante\n -> (2) Mostrar participantes con promedio mayor a 4\n -> (3) Mostrar participantes con promedio mayor a 7\n -> (4) Mostrar promedio de cada jurado\n -> (5) Mostrar jurado más estricto\n -> (6) Mostrar Top 3 de Participantes \n -> (7) Mostrar todos los participantes \n -> (0) Volver al menú anterior. \n\n")
@@ -63,7 +58,8 @@ while True:
                     os.system("clear")
                     print("Gracias por usar el programa! Nos vemos pronto! ")
                     break
-                    # case 1: 
+                case 1:
+                    
                     # case 2: 
                     # case 3:
                     # case 4:
@@ -73,4 +69,4 @@ while True:
         case 4:
             os.system("clear")
             cant_jurados = pedir_dato("\nIngresa la nueva cantidad de jurados: ", int, 0)
-            matriz_puntuación = definir_matriz(matriz_puntuacion, participantes, cant_jurados)
+            matriz_puntuacion = definir_matriz(matriz_puntuacion, participantes, cant_jurados)

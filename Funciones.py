@@ -1,6 +1,16 @@
 import os
 
 def init_matriz(cantidad_filas:int = 2, cantidad_columnas:int = 3,valor_inicial:any = 0) -> list:
+    """Inizialización de la Matriz
+
+    Args:
+        cantidad_filas (int, optional): Defaults to 2.
+        cantidad_columnas (int, optional): Defaults to 3.
+        valor_inicial (any, optional): Defaults to 0.
+
+    Returns:
+        list: Matriz inicializada
+    """
     matriz = []
     for _ in range(cantidad_filas):
         fila = [valor_inicial] * cantidad_columnas
@@ -35,7 +45,7 @@ def registrar_participantes(participantes:list) -> list:
     return participantes
 
 def definir_matriz(matriz, participantes:list, jurados:int = 3) -> list:
-    """Define las filas y columnas necesarias de nuestra matriz para almacenar los datos necesarios. 
+    """Define las filas y columnas de nuestra matriz para almacenar los datos necesarios. 
        Los participantes seran referidos en la lista participantes = [].
        Cada indice de esta fila coincidirá con los indices de las filas de la Matriz. 
        Cada columna representará a los jurados.
@@ -73,6 +83,22 @@ def carga_puntuacion(matriz:list, participantes:list, i:int, jurados:int):
         
     print("Notas: ", matriz[i])
     
+def get_all_participantes(participantes:list) -> str:
+    print("-> Lista de Participantes: \n")
+    for i in range(len(participantes)):
+        print(i+1, participantes[i])
+
+def buscar_participante(matriz:list, participantes:list, user_input:str) -> str:
+    encontrado = False
+    for i in range(len(participantes)):
+        if participantes[i].lower() == user_input.lower():
+            print(f"Participante {participantes[i]} encontrado! Procediendo a la carga de puntuación: ")
+            encontrado = True
+            return True
+    if not encontrado:
+        return False
+                
+
 def pedir_dato(mensaje: str, tipo: type = int, minimo: int = None, maximo: int = None, longitud_minima: int = None) -> int | str:
     """
     Lee un valor de la consola y lo valida según los parámetros recibidos.
