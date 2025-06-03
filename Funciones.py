@@ -234,7 +234,7 @@ def cargar_datos_ejemplo(matriz: list, participantes: list, cant_jurados: int) -
     ]
 
     puntajes_demo = [
-        [8, 9, 7],
+        [10, 10, 10],
         [6, 5, 7],
         [9, 9, 10],
         [4, 4, 5],
