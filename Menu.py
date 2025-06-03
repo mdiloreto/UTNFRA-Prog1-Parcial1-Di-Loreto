@@ -63,7 +63,9 @@ while True:
 
             while True: 
                 if not participantes: 
+                    os.system("clear")
                     print("⚠️ Antes de comenzar se debe cargar al menos un participante. ⚠️")
+                    input("\nPresioná ENTER para volver al menú...")
                     break
                 else:
                     os.system("clear")
@@ -137,7 +139,7 @@ while True:
                                 if p < prom_min:
                                     prom_min = p
                                     
-                            # 2) recorro los promedios y agrego al jurado a la lista de jurado mas estricto
+                            # 2) recorro los promedios de c/ jurado y agrego al jurado a la lista de jurado mas estricto
                             jurados_min = []
                             for j in range(len(proms)):
                                 if proms[j] == prom_min:
