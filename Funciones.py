@@ -195,10 +195,10 @@ def pedir_dato(mensaje: str, tipo: str, minimo: int = None, maximo: int = None, 
         tipo (type, optional): tipo del dato si es int o str. Defaults to int.
         minimo (int, optional): Solo para int. Valor minimo. Defaults to None.
         maximo (int, optional): Solo para int. Valor maximo. Defaults to None.
-        longitud_minima (int, optional): _description_. Defaults to None.
+        longitud_minima (int, optional): Solo para str. Longitud minima. Defaults to None.
 
     Returns:
-        int | str: _description_
+        int | str: interger o string segun corresponda
     """
     while True:
         dato_ingresado = input(mensaje)
