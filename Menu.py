@@ -29,6 +29,9 @@ while True:
             matriz_puntuación = definir_matriz(matriz_puntuacion, participantes, cant_jurados)
             
         case 2:
+            if not participantes: 
+                print("⚠️ Antes de comenzar se debe cargar al menos un participante. ⚠️")
+                input("\nPresioná ENTER para volver al menú...")
             os.system("clear")
             print("--- Menu de Carga de Puntuaciones --- \n\n -> (1) Ver lista de Participantes\n -> (2) Buscar participantes por nombre\n -> (0) Volver al menú anterior")
             user_input = pedir_dato(" Elegí una opción para proceder: ", int, 0, 2)
@@ -55,7 +58,11 @@ while True:
                         carga_puntuacion(matriz_puntuacion, participantes, encontrado, cant_jurados)  
                           
         case 3: 
+
             while True: 
+                if not participantes: 
+                    print("⚠️ Antes de comenzar se debe cargar al menos un participante. ⚠️")
+                    break
                 os.system("clear")
                 print(" -> (0) Buscar participante por nombre\n -> (1) Mostrar puntuaciones por participante\n -> (2) Mostrar participantes con promedio mayor a 4\n -> (3) Mostrar participantes con promedio mayor a 7\n -> (4) Mostrar promedio de cada jurado\n -> (5) Mostrar jurado más estricto\n -> (6) Mostrar Top 3 de Participantes \n -> (7) Mostrar todos los participantes \n -> (0) Volver al menú anterior. \n\n")
                 user_input = pedir_dato(" Elegí una opción para proceder: ", int, 0, 7)
