@@ -6,7 +6,7 @@ participantes = []
 matriz_puntuacion = init_matriz()
 
 # Opcional para PRUEBAS
-# matriz_puntuacion, participantes = cargar_datos_ejemplo(matriz_puntuacion, participantes, cant_jurados)
+matriz_puntuacion, participantes = cargar_datos_ejemplo(matriz_puntuacion, participantes, cant_jurados)
 
 while True: 
     os.system("clear")
@@ -26,7 +26,7 @@ while True:
             break
         case 1: 
             participantes = registrar_participantes(participantes)
-            matriz_puntuación = definir_matriz(matriz_puntuacion, participantes, cant_jurados)
+            matriz_puntuacion = definir_matriz(matriz_puntuacion, participantes, cant_jurados)
             
         case 2:
             if not participantes: 
@@ -152,7 +152,17 @@ while True:
                             input("\nENTER para volver al menú...")            
                             
                         # Top 3 alumnos.       
-                        # case 6:
+                        case 6:
+                            os.system("clear")
+                            proms = promedios_por_alumno(matriz_puntuacion)
+                            for i in range(len(proms)): 
+                                for j in range(len(proms)): 
+                                    if j > i: 
+                                        tmp_i = i
+                                        proms[i] = proms[j]
+                                        proms[j] = tmp_i
+                            print(proms[3:])
+                                
                         # Mostrar participantes ordenados alfabeticamente. 
                         # case 7: 
         case 4:

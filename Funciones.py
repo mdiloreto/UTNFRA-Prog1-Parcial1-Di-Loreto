@@ -101,12 +101,12 @@ def buscar_participante(participantes:list, user_input:str) -> str:
     if not encontrado:
         return None
 
-def mostrar_puntuaciones(matriz_puntuacion: list, participantes: list, idx:int, ) -> None:
+def mostrar_puntuaciones(matriz: list, participantes: list, idx:int, ) -> None:
     idx = idx -1
     if idx < 0 or idx >= len(participantes):
         print("Índice de participante fuera de rango.")
         return
-    puntuaciones = matriz_puntuacion[idx]
+    puntuaciones = matriz[idx]
     print(f" -> Participante: {participantes[idx]}\n Puntuaciones:\n")
     p_sum = 0
     for i in range(len(puntuaciones)):
@@ -115,20 +115,20 @@ def mostrar_puntuaciones(matriz_puntuacion: list, participantes: list, idx:int, 
     promedio = float(p_sum / len(puntuaciones))
     print(f"Promedio: {promedio}")
     
-def mostrar_promedio_mayor(matriz_puntuacion:list, participantes:list, min:int) -> list:
+def mostrar_promedio_mayor(matriz:list, participantes:list, min:int) -> list:
     """Muestra los promedios mayores al {promedio} ingresado
 
     Args:
-        matriz_puntuacion (_type_): 
+        matriz (_type_): 
         participantes (_type_): _description_
         promedio (_type_): _description_
     """
     result = []
-    for i in range(len(matriz_puntuacion)):
+    for i in range(len(matriz)):
         p_sum = 0
-        for j in range(len(matriz_puntuacion[i])):
-            p_sum = p_sum + matriz_puntuacion[i][j]
-        promedio = p_sum / len(matriz_puntuacion[i])
+        for j in range(len(matriz[i])):
+            p_sum = p_sum + matriz[i][j]
+        promedio = p_sum / len(matriz[i])
         if promedio > min:
             result = result + [participantes[i]]
     return result
@@ -154,6 +154,16 @@ def promedios_por_jurado(matriz: list) -> list:
         promedio = p_sum / len(matriz)
         promedios = promedios + [promedio]   
 
+    return promedios
+
+def promedios_por_alumno(matriz:list) -> list:
+    for i in range(len(matriz)):
+        p_sum = 0
+        for j in range(len(matriz[0])):
+            p_sum = p_sum + matriz[i][j]
+        promedio = p_sum / len(matriz[0])
+    
+    promedios = promedios + [promedio]
     return promedios
 
 ## OTRAS FUNCIONES HELPERS -> 
@@ -195,7 +205,7 @@ def pedir_dato(mensaje: str, tipo: type = int, minimo: int = None, maximo: int =
             except ValueError: 
                 print("Ups! El nombre debe contener al menos 3 letras. Volvé a intentarlo.")
 
-def cargar_datos_ejemplo(matriz_puntuacion: list, participantes: list, cant_jurados: int) -> tuple[list, list]:
+def cargar_datos_ejemplo(matriz: list, participantes: list, cant_jurados: int) -> tuple[list, list]:
     """
     Carga automática de participantes y sus puntuaciones para pruebas.
     Utiliza las funciones propias del sistema (sin append, sin copy).
@@ -223,11 +233,11 @@ def cargar_datos_ejemplo(matriz_puntuacion: list, participantes: list, cant_jura
     for nombre in nombres_demo:
         participantes = participantes + [nombre]
 
-    matriz_puntuacion = definir_matriz(matriz_puntuacion, participantes, cant_jurados)
+    matriz = definir_matriz(matriz, participantes, cant_jurados)
 
     for i in range(len(participantes)):
         for j in range(cant_jurados):
-            matriz_puntuacion[i][j] = puntajes_demo[i][j]
+            matriz[i][j] = puntajes_demo[i][j]
 
     print("✅ Datos de ejemplo cargados correctamente.")
-    return matriz_puntuacion, participantes
+    return matriz, participantes
