@@ -50,7 +50,7 @@ def registrar_participantes(participantes:list) -> list:
 def definir_matriz(matriz, participantes:list, jurados:int = 3) -> list:
     """Define las filas y columnas de nuestra matriz para almacenar los datos necesarios. 
        Los participantes seran referidos en la lista participantes = [].
-       Cada indice de esta fila coincidirá con los indices de las filas de la Matriz. 
+       Cada indice de esta fila coincidirá con los indices de las filas (primer columna) de la Matriz. 
        Cada columna representará a los jurados.
        Los valores almacenados serán el valor de los votos.  
 
@@ -180,7 +180,7 @@ def promedios_por_alumno(matriz:list) -> list:
 
 ## OTRAS FUNCIONES HELPERS -> 
 
-def pedir_dato(mensaje: str, tipo: type = int, minimo: int = None, maximo: int = None, longitud_minima: int = None) -> int | str:
+def pedir_dato(mensaje: str, tipo: str, minimo: int = None, maximo: int = None, longitud_minima: int = None) -> int | str:
     """
     Lee un valor de la consola y lo valida según los parámetros recibidos.
     - tipo: int  → intenta castear a entero
@@ -189,6 +189,16 @@ def pedir_dato(mensaje: str, tipo: type = int, minimo: int = None, maximo: int =
     - longitud_minima: para strings
     - solo_letras: obliga a que el texto contenga solo letras y espacios
     Devuelve el valor ya validado.
+
+    Args:
+        mensaje (str): mensaje a mostrar para el ingresop de dato.
+        tipo (type, optional): tipo del dato si es int o str. Defaults to int.
+        minimo (int, optional): _description_. Defaults to None.
+        maximo (int, optional): _description_. Defaults to None.
+        longitud_minima (int, optional): _description_. Defaults to None.
+
+    Returns:
+        int | str: _description_
     """
     while True:
         dato_ingresado = input(mensaje)
