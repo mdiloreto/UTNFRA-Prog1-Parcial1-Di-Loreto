@@ -157,13 +157,17 @@ def promedios_por_jurado(matriz: list) -> list:
     return promedios
 
 def promedios_por_alumno(matriz:list) -> list:
+    if len(matriz) == 0:
+        return []     
+                     
+    promedios = []      
     for i in range(len(matriz)):
         p_sum = 0
         for j in range(len(matriz[0])):
             p_sum = p_sum + matriz[i][j]
         promedio = p_sum / len(matriz[0])
-    
-    promedios = promedios + [promedio]
+        promedios = promedios + [promedio]
+        
     return promedios
 
 ## OTRAS FUNCIONES HELPERS -> 

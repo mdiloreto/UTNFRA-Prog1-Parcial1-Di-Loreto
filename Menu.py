@@ -152,17 +152,27 @@ while True:
                             input("\nENTER para volver al menú...")            
                             
                         # Top 3 alumnos.       
-                        case 6:
-                            os.system("clear")
-                            proms = promedios_por_alumno(matriz_puntuacion)
-                            for i in range(len(proms)): 
-                                for j in range(len(proms)): 
-                                    if j > i: 
-                                        tmp_i = i
-                                        proms[i] = proms[j]
-                                        proms[j] = tmp_i
-                            print(proms[3:])
+                        # case 6:
+                        #     os.system("clear")
+                        #     proms = promedios_por_alumno(matriz_puntuacion)
+                            
+                        #     #creo una lista de indices "temporal"
+                        #     tmp_idxs = []
+                        #     for idx in range(len(proms)):
+                        #         tmp_idxs = tmp_idxs + [idx]
                                 
+                        #     for i in range(len(proms)): 
+                        #         for j in range(len(proms)): 
+                        #             if proms[tmp_idxs[j]] > proms[i]: 
+                        #                 tmp_i = proms[i]
+                        #                 proms[i] = proms[j]
+                        #                 proms[j] = proms[tmp_i]
+                                        
+                        #     print(" -> Top 3 de Participantes: ")
+                        #     for p in range(3):
+                        #         print(participantes[p], proms[p])
+                        #     input("\nENTER para volver al menú...")            
+    
                         # Mostrar participantes ordenados alfabeticamente. 
                         # case 7: 
         case 4:
